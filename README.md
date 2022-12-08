@@ -1,2 +1,3 @@
-# ExoITJ-OTUS-react-ts-course
-OTUS React TS
+# OTUS React TS
+
+30.11.2022 - 27.04.2022
