@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FC, useState } from 'react';
-// import { getMathResult } from '.';
+import { getMathResult } from '.';
 
 const Calculator: FC = () => {
   const [value, setValue] = useState('2+2*2');
@@ -10,8 +10,8 @@ const Calculator: FC = () => {
   };
 
   const handleMathValue = () => {
-    //const res = getMathResult(value);
-    //res && setResult(res);
+    const res = getMathResult(value);
+    res && setResult(res);
   };
 
   return (
