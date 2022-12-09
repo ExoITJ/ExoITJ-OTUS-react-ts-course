@@ -1,9 +1,10 @@
 import React, { FC } from 'react';
+import Calculator from '../calculator/Calculator';
 
 type AppProps = {};
 
 const App: FC<AppProps> = () => {
-  return <h1>App</h1>;
+  return <Calculator />;
 };
 
 export default App;
