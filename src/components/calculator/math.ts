@@ -1,4 +1,3 @@
-// Мат.операторы
 export type OperationType = (first: number, second: number) => number;
 export type OperationResultType = (value: number) => number;
 export type OperatorsTypes = '+' | '-' | '*' | '/' | '!' | '^';
