@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FC, useState } from 'react';
-// import { getMathResult } from '.';
+import { getMathResult } from '.';
 
 const Calculator: FC = () => {
   const [value, setValue] = useState('2+2*2');
@@ -10,8 +10,8 @@ const Calculator: FC = () => {
   };
 
   const handleMathValue = () => {
-    //const res = getMathResult(value);
-    //res && setResult(res);
+    const res = getMathResult(value);
+    res && setResult(res);
   };
 
   return (
@@ -25,11 +25,11 @@ const Calculator: FC = () => {
       }}
     >
       <div style={{ display: 'flex', flexDirection: 'column', maxWidth: '150px' }}>
-        <input value={value} onChange={handleChangeValue} />
-        <button onClick={handleMathValue} style={{ margin: '10px 0px' }}>
+        <input value={value} onChange={handleChangeValue} data-testid="math-value" />
+        <button onClick={handleMathValue} style={{ margin: '10px 0px' }} data-testid="math-button">
           Посчитать
         </button>
-        <input value={result} disabled />
+        <input value={result} disabled data-testid="math-result" />
       </div>
     </div>
   );
