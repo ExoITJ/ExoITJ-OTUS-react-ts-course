@@ -1,4 +1,4 @@
-.box {
+.square {
   display: inline-block;
   border: 1px solid black;
   width: 10px;
@@ -7,16 +7,16 @@
   margin-bottom: -1px;
 }
 
-.off {
+.square:hover {
+  background: rgba(139, 0, 0, 0.5);
+}
+
+.died {
   background-color: rgba(255, 255, 255, 0.95);
 }
 
-.on {
+.alive {
   background-color: rgb(139, 0, 0);
-}
-
-.box:hover {
-  background: rgba(139, 0, 0, 0.5);
 }
 
 .grid {

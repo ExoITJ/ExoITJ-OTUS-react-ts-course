@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack serve --mode development --hot --open",
-    "test": "npx jest",
+    "test": "react-scripts test",
     "lint": "npm eslint ./src",
     "lint:format": "npx eslint ./src --fix",
     "prettier": "npx prettier --check ./src",

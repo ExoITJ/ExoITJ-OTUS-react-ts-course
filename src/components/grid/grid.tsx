@@ -4,9 +4,10 @@ import Box from '../box/box';
 interface GridProps {
   grid: boolean[][];
   columns: number;
+  selectBox: (row: number, column: number) => void;
 }
 
-const Grid: FC<GridProps> = ({ columns, grid }) => {
+const Grid: FC<GridProps> = ({ columns, grid, selectBox }) => {
   const width = columns * 11;
 
   const rowsArr = grid.map((rowArr, rowIdx) =>
@@ -18,7 +19,8 @@ const Grid: FC<GridProps> = ({ columns, grid }) => {
           key={boxId}
           row={rowIdx}
           column={colIdx}
-          className={grid[rowIdx][colIdx] ? 'box on' : 'box off'}
+          selectBox={selectBox}
+          className={grid[rowIdx][colIdx] ? 'square alive' : 'square died'}
         />
       );
     }),
