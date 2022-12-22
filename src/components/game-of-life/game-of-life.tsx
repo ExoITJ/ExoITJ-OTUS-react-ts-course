@@ -1,6 +1,9 @@
 import React, { FC, useEffect, useState } from 'react';
 import Grid from '../grid/grid';
 import { getEmptyGrid } from './game-of-life.utils';
+// TODO вопрос: как подключить модули css, ts ругается
+// @ts-ignore
+import styles from './game-of-life.module.css';
 
 const GameOfLife: FC = () => {
   const [rows, setRows] = useState(40);
@@ -39,7 +42,7 @@ const GameOfLife: FC = () => {
   return (
     <div>
       <h1 data-testid="game_of_life_title">Игра в жизнь</h1>
-      <div>
+      <div className={styles.buttonGroup}>
         <button data-testid="add_rows_button" onClick={handleAddRows}>
           + 10 строк
         </button>
