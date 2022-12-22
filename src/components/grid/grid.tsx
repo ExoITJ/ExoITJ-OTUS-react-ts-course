@@ -1,25 +1,25 @@
 import React, { FC } from 'react';
-import Box from '../box/box';
+import Square from '../square/square';
 
 interface GridProps {
   grid: boolean[][];
   columns: number;
-  selectBox: (row: number, column: number) => void;
+  selectSquare: (row: number, column: number) => void;
 }
 
-const Grid: FC<GridProps> = ({ columns, grid, selectBox }) => {
+const Grid: FC<GridProps> = ({ columns, grid, selectSquare }) => {
   const width = columns * 11;
 
   const rowsArr = grid.map((rowArr, rowIdx) =>
     rowArr.map((item, colIdx) => {
       const boxId = `${rowIdx}_${colIdx}`;
       return (
-        <Box
+        <Square
           id={boxId}
           key={boxId}
           row={rowIdx}
           column={colIdx}
-          selectBox={selectBox}
+          selectSquare={selectSquare}
           className={grid[rowIdx][colIdx] ? 'square alive' : 'square died'}
         />
       );

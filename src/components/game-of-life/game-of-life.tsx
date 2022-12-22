@@ -15,7 +15,7 @@ const GameOfLife: FC = () => {
     setGrid(newGrid);
   }, [rows, columns]);
 
-  const selectBox = (row: number, column: number) => {
+  const selectSquare = (row: number, column: number) => {
     const newGrid = grid.map((rowArr, rowIndex) =>
       rowArr.map((colItem, colIndex) => (rowIndex === row && colIndex === column ? !colItem : colItem)),
     );
@@ -56,7 +56,7 @@ const GameOfLife: FC = () => {
           - 10 столбцов
         </button>
       </div>
-      <Grid grid={grid} columns={columns} selectBox={selectBox} />
+      <Grid grid={grid} columns={columns} selectSquare={selectSquare} />
     </div>
   );
 };
