@@ -1,8 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import Grid from '../grid/grid';
 import { getEmptyGrid } from './game-of-life.utils';
-// TODO вопрос: как подключить модули css, ts ругается
-// @ts-ignore
 import styles from './game-of-life.module.css';
 
 const GameOfLife: FC = () => {
