@@ -83,5 +83,17 @@
       "pre-commit": "npm run lint && npm run prettier",
       "pre-push": "npm run lint:format && npm run prettier:fix"
     }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
