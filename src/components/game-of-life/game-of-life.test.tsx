@@ -24,37 +24,37 @@ describe('Component GameOfLife', () => {
       const addRowsButton = screen.getByTestId(/add_rows_button/);
 
       expect(addRowsButton).toBeInTheDocument();
-      expect(screen.getAllByTestId(/\d_\d/).length).toEqual(1600); //grid 39x39
+      expect(screen.getAllByTestId(/\d_\d/)).toHaveLength(1600); //grid 39x39
       // Click event
       await userEvent.click(addRowsButton);
-      expect(screen.getAllByTestId(/\d_\d/).length).toEqual(2000); //grid 49x39
+      expect(screen.getAllByTestId(/\d_\d/)).toHaveLength(2000); //grid 49x39
     });
     test('Should minus rows after click button', async () => {
       const minusRowsButton = screen.getByTestId(/minus_rows_button/);
 
       expect(minusRowsButton).toBeInTheDocument();
-      expect(screen.getAllByTestId(/\d_\d/).length).toEqual(1600); //grid 39x39
+      expect(screen.getAllByTestId(/\d_\d/)).toHaveLength(1600); //grid 39x39
       // Click event
       await userEvent.click(minusRowsButton);
-      expect(screen.getAllByTestId(/\d_\d/).length).toEqual(1200); //grid 29x39
+      expect(screen.getAllByTestId(/\d_\d/)).toHaveLength(1600); //grid 39x39 условие <= 40
     });
     test('Should add columns after click button', async () => {
       const addColumnsButton = screen.getByTestId(/add_columns_button/);
 
       expect(addColumnsButton).toBeInTheDocument();
-      expect(screen.getAllByTestId(/\d_\d/).length).toEqual(1600); //grid 39x39
+      expect(screen.getAllByTestId(/\d_\d/)).toHaveLength(1600); //grid 39x39
       // Click event
       await userEvent.click(addColumnsButton);
-      expect(screen.getAllByTestId(/\d_\d/).length).toEqual(2000); //grid 39x49
+      expect(screen.getAllByTestId(/\d_\d/)).toHaveLength(2000); //grid 39x49
     });
     test('Should minus columns after click button', async () => {
       const minusColumnsButton = screen.getByTestId(/minus_columns_button/);
 
       expect(minusColumnsButton).toBeInTheDocument();
-      expect(screen.getAllByTestId(/\d_\d/).length).toEqual(1600); //grid 39x39
+      expect(screen.getAllByTestId(/\d_\d/)).toHaveLength(1600); //grid 39x39
       // Click event
       await userEvent.click(minusColumnsButton);
-      expect(screen.getAllByTestId(/\d_\d/).length).toEqual(1600); //grid 39x39 условие <= 40
+      expect(screen.getAllByTestId(/\d_\d/)).toHaveLength(1600); //grid 39x39 условие <= 40
     });
   });
 });
