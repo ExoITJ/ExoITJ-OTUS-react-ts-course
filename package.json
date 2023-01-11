@@ -6,12 +6,13 @@
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack serve --mode development --hot --open",
-    "test": "npx jest",
+    "test": "react-scripts test",
     "lint": "npm eslint ./src",
     "lint:format": "npx eslint ./src --fix",
     "prettier": "npx prettier --check ./src",
     "prettier:fix": "npx prettier --write ./src",
-    "calc": "npx ts-node ./src/calculator/index.ts"
+    "calc": "npx ts-node ./src/calculator/index.ts",
+    "storybook": "start-storybook -p 6006"
   },
   "repository": {
     "type": "git",
@@ -25,12 +26,14 @@
   "homepage": "https://github.com/ExoITJ/ExoITJ-OTUS-react-ts-course#readme",
   "devDependencies": {
     "@babel/core": "7.20.5",
-    "@babel/plugin-transform-runtime": "^7.19.6",
+    "@babel/plugin-transform-runtime": "7.19.6",
     "@babel/preset-env": "7.20.2",
     "@babel/preset-react": "7.18.6",
     "@babel/preset-typescript": "7.18.6",
     "@babel/runtime": "7.20.6",
-    "@storybook/react": "^6.5.15",
+    "@storybook/builder-webpack5": "6.5.15",
+    "@storybook/manager-webpack5": "6.5.15",
+    "@storybook/react": "6.5.15",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "13.4.0",
     "@testing-library/user-event": "14.4.3",
@@ -80,5 +83,17 @@
       "pre-commit": "npm run lint && npm run prettier",
       "pre-push": "npm run lint:format && npm run prettier:fix"
     }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

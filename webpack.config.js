@@ -19,11 +19,25 @@ module.exports = {
         },
       },
       {
-        test: /.css$/,
+        test: /(?<!\.module)\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(jpg|jpeg|png|svg)/,
+        test: /(?<=\.module)\.css$/i,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[name]_[local]-[hash:base64:5]',
+              },
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(jpg|jpeg|png|svg|ico|gif)/,
         use: ['file-loader'],
       },
     ],
