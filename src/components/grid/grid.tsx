@@ -3,12 +3,12 @@ import Square from '../square/square';
 
 interface GridProps {
   grid: boolean[][];
-  columns: number;
-  selectSquare: (row: number, column: number) => void;
+  y: number;
+  selectSquare: (x: number, y: number) => void;
 }
 
-const Grid: FC<GridProps> = ({ columns, grid, selectSquare }) => {
-  const width = columns * 11;
+const Grid: FC<GridProps> = ({ y, grid, selectSquare }) => {
+  const width = y * 11;
 
   const rowsArr = grid.map((rowArr, rowIdx) =>
     rowArr.map((item, colIdx) => {
@@ -17,8 +17,8 @@ const Grid: FC<GridProps> = ({ columns, grid, selectSquare }) => {
         <Square
           id={boxId}
           key={boxId}
-          row={rowIdx}
-          column={colIdx}
+          x={rowIdx}
+          y={colIdx}
           selectSquare={selectSquare}
           className={grid[rowIdx][colIdx] ? 'square alive' : 'square died'}
         />
