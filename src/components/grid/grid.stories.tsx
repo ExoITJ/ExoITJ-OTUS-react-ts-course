@@ -19,5 +19,5 @@ export const Example: ComponentStory<typeof Grid> = () => {
     setGrid(newGrid);
   };
 
-  return <Grid grid={grid} columns={40} selectSquare={selectBox} />;
+  return <Grid grid={grid} y={40} selectSquare={selectBox} />;
 };

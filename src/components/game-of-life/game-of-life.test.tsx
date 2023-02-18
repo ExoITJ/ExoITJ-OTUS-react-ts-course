@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import GameOfLife from './game-of-life';
+import { GridAxisValues } from './game-of-life.utils';
 
 beforeEach(() => render(<GameOfLife />));
 afterEach(() => render(<GameOfLife />).unmount());
@@ -12,49 +13,29 @@ describe('Component GameOfLife', () => {
   });
 
   describe('GameOfLife handler functions', () => {
-    test('After clicking, the box should turn red', async () => {
+    test('after clicking, the box should turn red', async () => {
       const testSquare = screen.getByTestId('0_0');
 
       expect(testSquare).toHaveClass('died');
-      // Click event
       await userEvent.click(testSquare);
       expect(testSquare).toHaveClass('alive');
     });
-    test('Should add rows after click button', async () => {
-      const addRowsButton = screen.getByTestId(/add_rows_button/);
-
-      expect(addRowsButton).toBeInTheDocument();
-      expect(screen.getAllByTestId(/\d_\d/)).toHaveLength(1600); //grid 39x39
-      // Click event
-      await userEvent.click(addRowsButton);
-      expect(screen.getAllByTestId(/\d_\d/)).toHaveLength(2000); //grid 49x39
+    test('should render default small grid', () => {
+      expect(screen.getAllByTestId(/\d_\d/)).toHaveLength(1500);
     });
-    test('Should minus rows after click button', async () => {
-      const minusRowsButton = screen.getByTestId(/minus_rows_button/);
+    test('should set grid 50x70 after click button', async () => {
+      const button = screen.getByTestId(GridAxisValues.Medium);
 
-      expect(minusRowsButton).toBeInTheDocument();
-      expect(screen.getAllByTestId(/\d_\d/)).toHaveLength(1600); //grid 39x39
-      // Click event
-      await userEvent.click(minusRowsButton);
-      expect(screen.getAllByTestId(/\d_\d/)).toHaveLength(1600); //grid 39x39 условие <= 40
+      expect(button).toBeInTheDocument();
+      await userEvent.click(button);
+      expect(screen.getAllByTestId(/\d_\d/)).toHaveLength(3500);
     });
-    test('Should add columns after click button', async () => {
-      const addColumnsButton = screen.getByTestId(/add_columns_button/);
+    test('should set grid 70x90 after click button', async () => {
+      const button = screen.getByTestId(GridAxisValues.Large);
 
-      expect(addColumnsButton).toBeInTheDocument();
-      expect(screen.getAllByTestId(/\d_\d/)).toHaveLength(1600); //grid 39x39
-      // Click event
-      await userEvent.click(addColumnsButton);
-      expect(screen.getAllByTestId(/\d_\d/)).toHaveLength(2000); //grid 39x49
-    });
-    test('Should minus columns after click button', async () => {
-      const minusColumnsButton = screen.getByTestId(/minus_columns_button/);
-
-      expect(minusColumnsButton).toBeInTheDocument();
-      expect(screen.getAllByTestId(/\d_\d/)).toHaveLength(1600); //grid 39x39
-      // Click event
-      await userEvent.click(minusColumnsButton);
-      expect(screen.getAllByTestId(/\d_\d/)).toHaveLength(1600); //grid 39x39 условие <= 40
+      expect(button).toBeInTheDocument();
+      await userEvent.click(button);
+      expect(screen.getAllByTestId(/\d_\d/)).toHaveLength(6300);
     });
   });
 });
