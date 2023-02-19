@@ -33,7 +33,7 @@ const LoginPage: FC = () => {
       <h3 style={{ whiteSpace: 'nowrap' }}>OTUS Course</h3>
       <div className={s.loginBlock}>
         <label>Логин</label>
-        <input value={name} onChange={handleChangeName} />
+        <input value={name} onChange={handleChangeName} placeholder="Введите ваш логин" />
         {!!nameError && <pre style={{ color: 'red', margin: '0px', padding: '0px' }}>{nameError}</pre>}
       </div>
       <button onClick={handleLogin}>Войти</button>

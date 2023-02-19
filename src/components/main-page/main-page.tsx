@@ -11,7 +11,7 @@ const MainPage: FC = () => {
   return (
     <div>
       {`Пользователь: ${user}`}
-      <button style={{ marginLeft: '20px' }} onClick={handleLogout}>
+      <button style={{ marginLeft: '20px' }} onClick={handleLogout} data-testid="logout-button">
         Выйти
       </button>
       <GameOfLife />
