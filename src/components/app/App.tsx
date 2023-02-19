@@ -1,11 +1,24 @@
-import React, { FC } from 'react';
-// import Calculator from '../calculator/Calculator';
-// import { Todo } from '../todo/todo';
-import GameOfLife from '../game-of-life/game-of-life';
-// import { GameOfLifeClassComponent } from '../hw-4/game-of-life-class';
+import React, { FC, lazy, Suspense } from 'react';
+import { Route } from 'react-router';
+import { Routes } from 'react-router-dom';
+import { ErrorBoundary } from '../error-boundary/error-boundary';
+import { AppRoutes } from '../routes';
+
+const LoginPage = lazy(() => import('../login-page/login-page'));
+const MainPage = lazy(() => import('../main-page/main-page'));
 
 const App: FC = () => {
-  return <GameOfLife />;
+  const user = localStorage.getItem('user');
+
+  return (
+    <ErrorBoundary>
+      <Suspense fallback={<div>...Загрузка</div>}>
+        <Routes>
+          <Route path={AppRoutes.Any} element={user ? <MainPage /> : <LoginPage />} />
+        </Routes>
+      </Suspense>
+    </ErrorBoundary>
+  );
 };
 
 export default App;
