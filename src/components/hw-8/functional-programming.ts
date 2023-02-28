@@ -64,7 +64,7 @@ export const getQueryStringFromObject = (data: IData) => {
 };
 
 export const getObjectFromQueryString = (queryString: string) => {
-  let resultObj: any = {};
+  let resultObj: Record<string, any> = {}; // { [key: string]: any }
   queryString.split('&').forEach((item) => {
     const split = item.split('=');
     resultObj[split[0]] = parseInt(split[1]) ? parseInt(split[1]) : split[1];
