@@ -1,11 +1,11 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import LoginPage from './login-page';
 import userEvent from '@testing-library/user-event';
+import { renderWithProviders } from '../common-utils/tests/test-utils';
 
 describe('LoginPage component', () => {
   test('Should render', () => {
-    render(<LoginPage />);
+    renderWithProviders(<LoginPage />);
 
     expect(screen.getByText(/OTUS Course/i)).toBeInTheDocument();
     expect(screen.getByText(/Логин/i)).toBeInTheDocument();
@@ -14,7 +14,7 @@ describe('LoginPage component', () => {
   });
 
   test('Should add user info in local storage after click button', async () => {
-    render(<LoginPage />);
+    renderWithProviders(<LoginPage />);
     const button = screen.getByRole('button');
     const input = screen.getByPlaceholderText(/Введите ваш логин/i);
 
@@ -27,7 +27,7 @@ describe('LoginPage component', () => {
   });
 
   test('Should return validation errors after click button', async () => {
-    render(<LoginPage />);
+    renderWithProviders(<LoginPage />);
     const button = screen.getByRole('button');
 
     expect(button).toBeInTheDocument();

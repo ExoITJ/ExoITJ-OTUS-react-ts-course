@@ -1,12 +1,14 @@
 import React, { FC } from 'react';
+import { useAppDispatch, useAppSelector } from '../../app/store';
+import { selectUser } from '../../features/system/system-selectors';
+import { logout } from '../../features/system/system-slice';
 import GameOfLife from '../game-of-life/game-of-life';
 
 const MainPage: FC = () => {
-  const user = localStorage.getItem('user');
+  const dispatch = useAppDispatch();
+  const user = useAppSelector(selectUser);
 
-  const handleLogout = () => {
-    localStorage.clear();
-  };
+  const handleLogout = () => dispatch(logout());
 
   return (
     <div>

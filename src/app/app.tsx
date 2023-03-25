@@ -1,14 +1,16 @@
 import React, { FC, lazy, Suspense } from 'react';
 import { Route } from 'react-router';
 import { Routes } from 'react-router-dom';
-import { ErrorBoundary } from '../error-boundary/error-boundary';
-import { AppRoutes } from '../routes';
+import { ErrorBoundary } from '../common/error-boundary/error-boundary';
+import { AppRoutes } from '../common/routes';
+import { selectUser } from '../features/system/system-selectors';
+import { useAppSelector } from './store';
 
-const LoginPage = lazy(() => import('../login-page/login-page'));
-const MainPage = lazy(() => import('../main-page/main-page'));
+const LoginPage = lazy(() => import('../common/login-page/login-page'));
+const MainPage = lazy(() => import('../common/main-page/main-page'));
 
 const App: FC = () => {
-  const user = localStorage.getItem('user');
+  const user = useAppSelector(selectUser);
 
   return (
     <ErrorBoundary>

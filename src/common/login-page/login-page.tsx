@@ -1,4 +1,6 @@
 import React, { FC, ChangeEventHandler, useState } from 'react';
+import { useAppDispatch } from '../../app/store';
+import { login } from '../../features/system/system-slice';
 import s from './login-page.module.css';
 
 const enum ValidationErrors {
@@ -6,6 +8,8 @@ const enum ValidationErrors {
 }
 
 const LoginPage: FC = () => {
+  const dispatch = useAppDispatch();
+
   const [name, setName] = useState('');
   const [nameError, setNameError] = useState('');
 
@@ -25,7 +29,7 @@ const LoginPage: FC = () => {
 
     if (!isValid) return;
 
-    localStorage.setItem('user', nameTrimmed);
+    dispatch(login({ login: nameTrimmed }));
   };
 
   return (
