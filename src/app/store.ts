@@ -16,10 +16,8 @@ export const createAppStore = (initialState?: Partial<RootState>) =>
     preloadedState: initialState,
     devTools: process.env.NODE_ENV !== 'production',
     middleware: (getDefaultMiddleware) => {
-      const defaultMiddlewares = getDefaultMiddleware();
-      return process.env.NODE_ENV === 'development'
-        ? defaultMiddlewares.concat(logger, sagaMiddleware)
-        : defaultMiddlewares;
+      const defaultMiddlewares = getDefaultMiddleware().concat(sagaMiddleware);
+      return process.env.NODE_ENV === 'development' ? defaultMiddlewares.concat(logger) : defaultMiddlewares;
     },
   });
 
