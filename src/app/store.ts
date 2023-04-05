@@ -2,11 +2,13 @@ import { AnyAction, configureStore, ThunkAction } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { rootReducer } from './reducers';
 import logger from 'redux-logger';
+import createSagaMiddleware from 'redux-saga';
 
 export const createAppReducer = () => rootReducer;
 
 const reducer = createAppReducer();
 export type RootState = ReturnType<typeof reducer>;
+const sagaMiddleware = createSagaMiddleware();
 
 export const createAppStore = (initialState?: Partial<RootState>) =>
   configureStore({
@@ -15,7 +17,9 @@ export const createAppStore = (initialState?: Partial<RootState>) =>
     devTools: process.env.NODE_ENV !== 'production',
     middleware: (getDefaultMiddleware) => {
       const defaultMiddlewares = getDefaultMiddleware();
-      return process.env.NODE_ENV === 'development' ? defaultMiddlewares.concat(logger) : defaultMiddlewares;
+      return process.env.NODE_ENV === 'development'
+        ? defaultMiddlewares.concat(logger, sagaMiddleware)
+        : defaultMiddlewares;
     },
   });
 
